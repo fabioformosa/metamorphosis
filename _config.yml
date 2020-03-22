@@ -1,5 +1,8 @@
 theme: jekyll-theme-cayman
 title: Metamorphosis
 description: A library suite for conversions
+show_downloads: false
 github:
   java_repository_url : https://github.com/fabioformosa/j-metamorphosis
+  js_repository_url : https://github.com/fabioformosa/metamorphosis-js
+  nestjs_repository_url : https://github.com/fabioformosa/metamorphosis-nestjs
