@@ -1,3 +1,5 @@
 theme: jekyll-theme-cayman
 title: Metamorphosis
 description: A library suite for conversions
+github:
+  java_repository_url : https://github.com/fabioformosa/j-metamorphosis
