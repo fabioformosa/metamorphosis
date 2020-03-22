@@ -5,7 +5,7 @@ layout: default
 > "Nothing is lost, nothing is created, everything is transformed"
 > _Lavoisier
 
-**<<< THIS PAGE IS WORK IN PROGRESS >>>**
+**<< THIS PAGE IS WORK IN PROGRESS >>**
 
 [TBD] What's Metamorphosis? (requirements: java/spring boot, nodeJS project, NestJS project)
 
