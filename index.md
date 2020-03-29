@@ -7,8 +7,8 @@ layout: default
   
   
 **Metamorphosis** is an utility library to ease conversions of objects.  
-Most of development time is due to object conversions: from DTOs to entities, from entities to DTOs or from DTOs and other DTOs.  
-Metamorphosis helps to write converters in a lean way and places them in a better structure within your project.
+Most of development time is due to type conversions: from DTOs to entities, from entities to DTOs or from DTOs and other DTOs.  
+Metamorphosis helps to write converters in a lean way and places them in a better structure within your project (further details in paragraphs below).
 
 Metamorphosis supports several languages and frameworks:
 * **[j-metamorphosis](https://github.com/fabioformosa/j-metamorphosis)** - Java with [Spring Boot](https://spring.io/projects/spring-boot)
@@ -20,9 +20,13 @@ Metamorphosis supports several languages and frameworks:
 
 # Conversion Service
 
-**<< THIS PAGE IS WORK IN PROGRESS >>**
+Metamorphosis follows the model provided by Spring Framework for type conversions.  
+**j-metamorphosis** offers an enabler of Spring Conversion Service by annotation and other utility class to write lean converters.
+**metamorphosis-nestjs** transposes to NestJS the concept of conversion service, missing in NestJS.  
 
-[TBD] Something about concept of conversion service.
+The conversion service is a component of a general type conversion system. The system defines an SPI to implement type conversion logic and an API to perform type conversions at runtime
+
+**<< THIS PAGE IS WORK IN PROGRESS >>**
 
 [TBD] Benefits of a conversion service.
 
