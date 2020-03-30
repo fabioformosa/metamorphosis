@@ -21,7 +21,8 @@ Metamorphosis supports several languages and frameworks:
 # Conversion Service
 
 Metamorphosis follows the model provided by Spring Framework for type conversions.  
-**j-metamorphosis** offers an enabler of Spring Conversion Service by annotation and other utility class to write lean converters.
+
+**j-metamorphosis** offers an enabler of Spring Conversion Service by annotation and other utility class to write lean converters.  
 **metamorphosis-nestjs** transposes to NestJS the concept of conversion service, missing in NestJS.  
 
 The conversion service is a component of a general type conversion system. The system defines an SPI to implement type conversion logic and an API to perform type conversions at runtime
