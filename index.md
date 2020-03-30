@@ -55,14 +55,121 @@ Benefits of a conversion service:
 
 [TBD] Activate it with j-metamorphosis and metamorphosis-nest
 
-# Converters
+# Metamorphosis for Java
 
-**<< THIS PAGE IS WORK IN PROGRESS >>**
-[TBD] HERE Example of some converters
+Import **j-metamorphosis** from maven repo
 
-# Supports
+    <dependency>
+      <groupId>it.fabioformosa</groupId>
+      <artifactId>metamorphosis-core</artifactId>
+      <version> ... </version>
+    </dependency>
+or
+    <dependency>
+      <groupId>it.fabioformosa</groupId>
+      <artifactId>metamorphosis-jpa</artifactId>
+      <version> ... </version>
+    </dependency>
+   
+add `@EnableMetamorphosisConversions` to your spring boot config class
 
-**<< THIS PAGE IS WORK IN PROGRESS >>**
-[TBD] Jpa, Mongoose/Typegoose, TypeORM
+    @Configuration
+    @EnableMetamorphosisConversions(basePackages = { "your.package" })
+    public class MetamorphosisExampleConfig {
+
+    }   
+    
+ To read how to create a converter and how to invoke the conversion service, go to [j-metamorphosis README](https://github.com/fabioformosa/j-metamorphosis]).  
+
+# Metamorphosis for Javascript
+
+Import **metamorphosis-js** from npm:
+
+``` npm install --save @fabio.formosa/metamorphosis ```
+
+Create a converter:
+
+    import { Convert, Converter } from '@fabio.formosa/metamorphosis';
+
+    @Convert(Car, CarDto)
+    export default class CarToCarDtoConverter implements Converter<Car, CarDto> {
+  
+    public convert(source: Car): CarDto {
+       const target = new CarDto();
+       target.color = source.color;
+       target.model = source.model;
+       target.manufacturerName = source.manufacturer.name;
+       return target;
+    }
+
+    }
+
+The `Conversion Helper` is an alias for the conversion service:
+ 
+    import { ConversionHelper } from '@fabio.formosa/metamorphosis'
+    ...
+    ConversionHelper conversionHelper = new ConversionHelper();
+    const carDto = <CarDto> await conversionHelper.convert(car, CarDto);    
+
+For further details about conversions, go to [metamorphosis-js README](https://github.com/fabioformosa/metamorphosis-js]).  
+
+# Metamorphosis for NestJS
+
+Import **metamorphosis-nestjs** from npm:
+
+``` npm install --save @fabio.formosa/metamorphosis-nest ```
+
+Import the `MetamorphosisModule` :
+
+    import { MetamorphosisNestModule } from '@fabio.formosa/metamorphosis-nest';
+
+    @Module({
+      imports: [MetamorphosisModule.register()],
+      ...
+    }
+    export class MyApp{
+    }
+    
+Create a new converter class, implementing the interface Converter<Source, Target> and decorate the class with @Convert
+
+    import { Convert, Converter } from '@fabio.formosa/metamorphosis';
+
+    @Injectable()
+    @Convert(Car, CarDto)
+    export default class CarToCarDtoConverter implements Converter<Car, CarDto> {
+  
+      public convert(source: Car): CarDto {
+         const target = new CarDto();
+         target.color = source.color;
+         target.model = source.model;
+         target.manufacturerName = source.manufacturer.name;
+         return target;
+      }
+
+    }
+
+Use the conversion service:
+
+    import { ConversionService } from '@fabio.formosa/metamorphosis-nest';
+
+    @Injectable()
+    class CarService{
+
+      constructor(private convertionService: ConvertionService){}
+
+      public async getCar(id: string): CarDto{
+         const car: Car = await CarModel.findById(id);
+         return <CarDto> await this.convertionService.convert(car, CarDto);
+      }
+
+    }
+    
+For further details about conversions, go to [metamorphosis-nestjs README](https://github.com/fabioformosa/metamorphosis-nestjs]).  
+
+# Support
+
+**j-metamorphosis** supports JPA in order to convert entities it DTOs and vice versa.  
+**metamorphosis-nestjs** supports Mongoose/Typegoose and Type ORM.
+
 
  
