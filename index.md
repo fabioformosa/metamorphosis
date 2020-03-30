@@ -20,16 +20,30 @@ Metamorphosis supports several languages and frameworks:
 
 # Conversion Service
 
-Metamorphosis follows the model provided by Spring Framework for type conversions.  
-
-**j-metamorphosis** offers an enabler of Spring Conversion Service by annotation and other utility class to write lean converters.  
-**metamorphosis-nestjs** transposes to NestJS the concept of conversion service, missing in NestJS.  
-
 The conversion service is a component of a general type conversion system. The system defines an SPI to implement type conversion logic and an API to perform type conversions at runtime
 
-**<< THIS PAGE IS WORK IN PROGRESS >>**
+    interface Converter<S, T> {
 
-[TBD] Benefits of a conversion service.
+       T convert(S source);   
+        
+    }
+    
+ and
+    
+    interface ConversionService {
+        
+        T convert(S source, Class<T> targetType);
+	
+    }
+    
+The convervion service is a registry of converters and it delegates to its registered converters to carry out type conversion logic.      
+**j-metamorphosis** follows the model of type conversions provided by Spring Framework. It offers an enabler (by annotations) for Spring Conversion Service and other utility classes to write lean converters.  
+**metamorphosis-nestjs** brings to NestJS the missing concept of conversion service.
+
+Benefits of a conversion service:
+* Usually conversions are spread as static methods into many classes. With a conversion service, you have a class for each converter and you can put all converters in the same package. So, it will be easy to locate the conversion when you navigate your code.
+* Usually conversions are implemented as static methods, but some conversions needs to query a repository. With a conversion service, all converters could be singleton and you can inject repositories or other services into it.
+* Usually to convert a type you have to convert all subtypes, creating a messy dependency chain. With a conversion service, according to SRP (single responsibility principle) a converter just does its part of conversion and it delegates to conversion service the remaining conversion of all subtypes. So, each converter has at most a dependency from the conversion service.
 
 [TBD] Activate it with j-metamorphosis and metamorphosis-nest
 
