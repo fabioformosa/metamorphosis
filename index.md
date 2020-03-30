@@ -53,8 +53,6 @@ Benefits of a conversion service:
 * Usually conversions are implemented as static methods, but some conversions needs to query a repository. With a conversion service, all converters could be singleton and you can inject repositories or other services into it.
 * Usually to convert a type you have to convert all subtypes, creating a messy dependency chain. With a conversion service, according to SRP (single responsibility principle) a converter just does its part of conversion and it delegates to conversion service the remaining conversion of all subtypes. So, each converter has at most a dependency from the conversion service.
 
-[TBD] Activate it with j-metamorphosis and metamorphosis-nest
-
 # Metamorphosis for Java
 
 Import **j-metamorphosis** from maven repo
