@@ -50,7 +50,7 @@ Developer has to call conversion service for any needed conversion
 
 Benefits of a conversion service:
 * Usually conversions are spread as static methods into many classes. With a conversion service, you have a class for each converter and you can put all converters in the same package. So, it will be easy to locate the conversion when you navigate your code.
-* Usually conversions are implemented as static methods, but some conversions needs to query a repository. With a conversion service, all converters could be singleton and you can inject repositories or other services into it.
+* Usually conversions are implemented as static methods, but some conversions need to query a repository. With a conversion service, all converters could be singleton and you can inject repositories or other services into them.
 * Usually to convert a type you have to convert all subtypes, creating a messy dependency chain. With a conversion service, according to SRP (single responsibility principle) a converter just does its part of conversion and it delegates to conversion service the remaining conversion of all subtypes. So, each converter has at most a dependency from the conversion service.
 
 # Metamorphosis for Java
@@ -77,7 +77,7 @@ add `@EnableMetamorphosisConversions` to your spring boot config class
 
     }   
     
- To read how to create a converter and how to invoke the conversion service, go to [j-metamorphosis README](https://github.com/fabioformosa/j-metamorphosis]).  
+ To read how to create a converter and how to invoke the conversion service, go to [j-metamorphosis README](https://github.com/fabioformosa/j-metamorphosis).  
 
 # Metamorphosis for Javascript
 
@@ -109,7 +109,7 @@ The `Conversion Helper` is an alias for the conversion service:
     ConversionHelper conversionHelper = new ConversionHelper();
     const carDto = <CarDto> await conversionHelper.convert(car, CarDto);    
 
-For further details about conversions, go to [metamorphosis-js README](https://github.com/fabioformosa/metamorphosis-js]).  
+For further details about conversions, go to [metamorphosis-js README](https://github.com/fabioformosa/metamorphosis-js).  
 
 # Metamorphosis for NestJS
 
@@ -162,7 +162,7 @@ Use the conversion service:
 
     }
     
-For further details about conversions, go to [metamorphosis-nestjs README](https://github.com/fabioformosa/metamorphosis-nestjs]).  
+For further details about conversions, go to [metamorphosis-nestjs README](https://github.com/fabioformosa/metamorphosis-nestjs).  
 
 # Support
 
