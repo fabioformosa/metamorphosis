@@ -45,7 +45,7 @@ Developer has to call conversion service for any needed conversion
     TargetType targetObject = conversionService.convert(sourceObj, TargetType)
 
 
-**j-metamorphosis** follows the model of type conversions provided by Spring Framework (see [Spring Type Conversion doc](https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#core-convert)). It offers an enabler (by annotations) for Spring Conversion Service and other utility classes to write lean converters.  
+**j-metamorphosis** follows the model of type conversions provided by Spring Framework (see [Spring Type Conversion](https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#core-convert)). It offers an enabler (by annotations) for Spring Conversion Service and other utility classes to write lean converters.  
 **metamorphosis-nestjs** brings to NestJS the missing concept of conversion service.
 
 Benefits of a conversion service:
